@@ -25,7 +25,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.sitepoint.com/*"],
+      "matches" : ["*://*/*"],
 //      "css": ["style.css"],
       "js": ["script.js"]
     }

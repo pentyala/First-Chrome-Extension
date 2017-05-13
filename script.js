@@ -3,28 +3,20 @@
 chrome.extension.onMessage.addListener(function (message, sender, sendResponse) {
     switch (message.type) {
         case "super-power":
-            var imgs = document.querySelectorAll(".ArticleCopy img");
-            if (imgs.length === 0) {
-                alert("There are no any imgs in the page.");
-            } else {
-                var xmlhttp = new XMLHttpRequest();
-                var url = 'http://gateway.marvel.com/v1/public/characters?ts=1448030805540&apikey=dfa06d77bc9c4f9f0ed01337848247e3&hash=0e54a94548adeb07b97e3e3428c6956f&limit=' + imgs.length;
-
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        var myArr = JSON.parse(xmlhttp.responseText);
-                        var arr = myArr.data.results;
-                        var i;
-
-                        for(var i=0; i < imgs.length; i++) {
-                            console.log(imgs[i].src);
-                            imgs[i].src = arr[i].thumbnail.path + '.' + arr[i].thumbnail.extension;
-                        }
-                    }
-                };
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
+            // console.log(document.getElementsByTagName("input"));
+            var temp = document.getElementsByTagName("input");
+            // console.log("Number of input tags in the screen is "+temp.length);
+            for(i=0;i<temp.length;i++)
+            {
+                console.log(temp[i].id+"  ----  "+temp[i].name);
+                if(temp[i].id.includes("name") || temp[i].name.includes("name"))
+                    temp[i].value = "Aditya";
+                else if(temp[i].id.includes("email") || temp[i].name.includes("email"))
+                    temp[i].value= "aditya.pentyala@outlook.com"
+                
             }
+            document.getElementById("email").value = "Adityaxxx";
+            // alert(document.getElementById("pass").value);
             break;
     }
 });
